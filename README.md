@@ -8,6 +8,8 @@
 
 > 🔑<strong>个人符号库管理</strong>采用前后端分离技术，前端采用的技术栈为<strong>Vue</strong>和<strong>babylon.js</strong>；后端采用的技术栈为<strong>Node.js</strong>和<strong>Express</strong>；WebGL三维模型可视化采用的技术栈为<strong>babylon.js</strong>。该部分分为三个模块，分别是: <strong>个人符号模型展示</strong>、<strong>个人符号模型上传</strong>和<strong>个人符号模型删除</strong>。
 
+> 🍭如果您有疑问请直接在 Issues 中进行提问，欢迎大家积极提问。
+
 ## 相关技术栈
 
 - **📑前端框架：**[JQuery](https://github.com/jquery/jquery)、[Vue](https://cn.vuejs.org/index.html)
@@ -81,16 +83,17 @@ npm start
 
 通过`babylon.js`来对符号模型进行展示，显示模型的纹理以及立体效果，并且可以对模型进行缩放和全视角旋转。
 
-<div align=center><img src="https://github.com/Cartographic-group-of-Hubei-University/vue-cesium-visualization/raw/master/images/cesium1.gif"></div>
+<div align=center><img src="https://github.com/Cartographic-group-of-Hubei-University/symbol-visualization-system/raw/master/images/personal1.gif"></div>
+<div align=center><img src="https://github.com/Cartographic-group-of-Hubei-University/symbol-visualization-system/raw/master/images/personal2.gif"></div>
 
 ### 个人符号模型上传
 
 结合`Node`中`multer`和`compressing`这两个中间件实现文件的上传与解压。其中`multer`中间件是用来进行文件上传的，`compressing`中间件是用来进行文件解压的。
 
-<div align=center><img src="https://github.com/Cartographic-group-of-Hubei-University/vue-cesium-visualization/raw/master/images/cesium2.gif"></div>
+<div align=center><img src="https://github.com/Cartographic-group-of-Hubei-University/symbol-visualization-system/raw/master/images/personal3.gif"></div>
 
 ### 个人符号模型删除
 
 客户端点击“删除”按钮，后端结合对应的接口获取需要删除的符号信息，通过`fs`模块中的`unlinkSync`方法将后端中存储的相应符号进行删除。
 
-<div align=center><img src="https://github.com/Cartographic-group-of-Hubei-University/vue-cesium-visualization/raw/master/images/cesium2.gif"></div>
+<div align=center><img src="https://github.com/Cartographic-group-of-Hubei-University/symbol-visualization-system/raw/master/images/personal4.gif"></div>
