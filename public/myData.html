@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的符号</title>
+    <script src="./assets/babylonjs-sample/pep.min.js"></script>
+    <script src="./assets/babylonjs-sample/dat.gui.min.js"></script>
+    <script src="./assets/babylonjs-sample/ammo.js"></script>
+    <script src="./assets/babylonjs-sample/cannon.js"></script>
+    <script src="./assets/babylonjs-sample/Oimo.js"></script>
+    <script src="./assets/babylonjs-sample/gltf_validator.js"></script>
+    <script src="./assets/babylonjs-sample/earcut.min.js"></script>
+    <script src="./assets/babylonjs-sample/babylon.js"></script>
+    <script src="./assets/babylonjs-sample/babylon.inspector.bundle.js"></script>
+    <script src="./assets/babylonjs-sample/babylonjs.materials.min.js"></script>
+    <script src="./assets/babylonjs-sample/babylonjs.proceduralTextures.min.js"></script>
+    <script src="./assets/babylonjs-sample/babylonjs.postProcess.min.js"></script>
+    <script src="./assets/babylonjs-sample/babylonjs.loaders.js"></script>
+    <script src="./assets/babylonjs-sample/babylonjs.serializers.min.js"></script>
+    <script src="./assets/babylonjs-sample/babylon.gui.min.js"></script>
+    <!-- vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <!-- 引入axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body,
+        html,
+        #app {
+            height: 100%;
+            width: 100%;
+        }
+        
+        .header {
+            width: 1138px;
+            height: 50px;
+            margin: 0 auto;
+            background-color: #f8f8f8;
+            border-radius: 4px;
+            position: relative;
+            min-height: 50px;
+            border: 1px solid #e7e7e7;
+        }
+        
+        .header-left a {
+            float: left;
+            height: 50px;
+            padding: 15px 15px;
+            font-size: 18px;
+            line-height: 20px;
+            color: #777;
+            text-decoration: none;
+        }
+        
+        .header-left {
+            float: left;
+            width: 450px;
+        }
+        
+        .header-right {
+            float: left;
+            height: 50px;
+            line-height: 50px;
+        }
+        
+        .btn {
+            color: #333;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            height: 20px;
+            display: inline-block;
+            padding: 6px 12px;
+            margin-bottom: 8px;
+            margin-top: 8px;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 20px;
+            text-align: center;
+            white-space: nowrap;
+            touch-action: manipulation;
+            cursor: pointer;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+        
+        .btn:hover {
+            color: #333;
+            background-color: #e6e6e6;
+            border-color: #adadad;
+        }
+        
+        .upload-alter {
+            float: left;
+            width: 950px;
+            font-size: 16px;
+            vertical-align: middle;
+        }
+        
+        .upload-btn {
+            margin: 30px auto 30px;
+            width: 1280px;
+        }
+        
+        .el-upload {
+            float: left;
+            margin-right: 30px;
+        }
+        
+        .upload-btn {
+            overflow: hidden;
+        }
+        
+        body .el-table th.gutter {
+            display: table-cell !important
+        }
+        
+        .el-button {
+            font-size: 16px;
+        }
+        
+        .avatar-uploader .el-upload {
+            border-radius: 6px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .avatar-uploader .avatar-uploader-icon:hover {
+            border-color: #409EFF;
+        }
+        
+        .avatar-uploader-icon {
+            border: 1px dashed #d9d9d9;
+            font-size: 28px;
+            color: #8c939d;
+            width: 178px;
+            height: 178px;
+            line-height: 178px;
+            text-align: center;
+        }
+        
+        .el-table {
+            margin: 20px auto 50px!important;
+        }
+        
+        .el-table--scrollable-x .el-table__body-wrapper {
+            overflow-x: hidden;
+        }
+        
+        .show-canvas {
+            height: 100%;
+            width: 100%;
+        }
+        
+        .symbol-total {
+            float: right;
+            font-size: 18px;
+            color: #777;
+            margin-top: 5px;
+        }
+        
+        .name-alter {
+            margin-bottom: 15px;
+            width: 300px;
+        }
+        
+        .footer-symbol {
+            width: 100%;
+            height: 50px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 头部样式 -->
+        <div class="header">
+            <div class="header-left">
+                <a href="#">全息地图获取与位置信息聚合技术——我的符号</a>
+            </div>
+            <div class="header-right">
+                <a href="index.html" class="btn">符号库管理</a>
+            </div>
+        </div>
+
+        <!-- 上传按钮 -->
+        <div class="upload-btn">
+            <el-upload class="upload-demo" action="http://127.0.0.1:3000/api/file/upload" :show-file-list="false" :on-success="handleAvatarSuccess" name="file">
+                <el-button size="medium">点击上传</el-button>
+            </el-upload>
+            <el-alert title="请上传zip压缩文件(注意：请保证上传的压缩文件以及里面的其他文件的命名格式以数字或英文命名，并且在上传之后必须填写对应上传的符号名称)" type="warning" show-icon :closable="false" class="upload-alter"></el-alert>
+            <span class="symbol-total">我的符号共计{{symbolList.length}}个</span>
+        </div>
+
+        <!-- 输入符号名称对话框 -->
+        <el-dialog title="文件名称" :visible.sync="dialogVisible" width="30%" :close-on-click-modal="false" :close-on-press-escape="false" :show-close="false">
+            <el-alert title="文件名称为必填项，请输入中文的名称" type="warning" show-icon :closable="false" class="name-alter">
+            </el-alert>
+            <el-input v-model="inputName" placeholder="请输入文件名称"></el-input>
+            <span slot="footer" class="dialog-footer">
+                <el-button type="primary" @click="uploadFilename">确 定</el-button>
+            </span>
+        </el-dialog>
+
+        <!-- 显示模型对话框 -->
+        <el-dialog title="三维模型展示" :visible.sync="symbolVisible" width="50%">
+            <canvas id="show1" touch-action="none" v-if="symbolVisible" class="show-canvas"></canvas>
+        </el-dialog>
+
+        <!-- 我的符号列表 -->
+        <el-table :data="symbolSortList" :border="true" :stripe="true" style="width: 1280px" :header-cell-style="{textAlign: 'center'}" :cell-style="{ textAlign: 'center' }">
+            <el-table-column type="index" label="" width="80"></el-table-column>
+            <el-table-column prop="s_name" label="符号名称" width="150"></el-table-column>
+            <el-table-column label="创建时间" width="180">
+                <template slot-scope="scope">
+                    <i class="el-icon-time"></i>
+                    <span style="margin-left: 10px">{{ scope.row.s_showtime }}</span>
+                  </template>
+            </el-table-column>
+            <el-table-column prop="s_img" label="符号图像" width="180">
+                <template slot-scope="scope">
+                    <el-image 
+                        style="width: 100px; height: 100px"
+                        :src="scope.row.s_img" 
+                        :preview-src-list="[scope.row.s_img]">
+                    </el-image>
+                </template>
+            </el-table-column>
+            <el-table-column prop="s_des" label="符号描述" width="350"></el-table-column>
+            <el-table-column label="符号三维模型" width="180">
+                <template slot-scope="scope">
+                    <el-tooltip class="item" effect="dark" content="显示三维模型" placement="top">
+                        <el-button type="text" @click="showCanvas(scope.row.s_path, scope.row.s_name + '.gltf')">{{scope.row.s_name}}</el-button>
+                    </el-tooltip>
+                </template>
+            </el-table-column>
+            <el-table-column label="操作" width="160">
+                <template slot-scope="scope">
+                    <el-button type="text" icon="el-icon-delete" @click="deleteSymbol(scope.row.s_time)">删除</el-button>
+                </template>
+            </el-table-column>
+        </el-table>
+
+        <div class="footer-symbol"></div>
+    </div>
+</body>
+
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                symbolList: [],
+                dialogVisible: false,
+                inputName: '',
+                symbolVisible: false
+            }
+        },
+        methods: {
+            handleAvatarSuccess() {
+                this.dialogVisible = true
+            },
+            uploadFilename() {
+                axios.post('http://127.0.0.1:3000/api/file/getFileName', {
+                    file_name: this.inputName
+                }).then(res => {
+                    console.log(res)
+                    if (res.data.code === 0) {
+                        this.dialogVisible = false
+                        this.inputName = ''
+                        location.reload()
+                    }
+                }).catch(e => {
+                    console.log(e);
+                })
+            },
+            showList() {
+                axios.get('http://127.0.0.1:3000/api/file/getSymbolList').then(res => {
+                    console.log(res);
+                    if (res.data.code === 0) {
+                        res.data.data.forEach(element => {
+                            element.s_img = element.s_path + element.s_name + '.gif'
+                            element.s_showtime = element.s_time.slice(0, 4) + ' ' + element.s_time.slice(4, 6) + '-' + element.s_time.slice(6, 8) + ' ' + element.s_time.slice(8, 10) + ':' + element.s_time.slice(10, 12)
+                            element.s_timesort = element.s_time + 0
+                        });
+                        this.symbolList = res.data.data
+                    }
+                }).catch(e => {
+                    console.log(e);
+                })
+            },
+            showCanvas(symbol_path, symbol_name) {
+                this.symbolVisible = true
+                this.$nextTick(() => {
+                    // 创建画布(获得canvas元素)
+                    var canvas = document.getElementById("show1");
+                    // 创建渲染引擎
+                    var engine = new BABYLON.Engine(canvas, true);
+                    var create_scene = function() {
+                        // 创建一个基本的Scene对象(场景)，用来容纳所有其他对象
+                        var scene = new BABYLON.Scene(engine);
+                        // 创建一个旋转相机
+                        var camera = new BABYLON.ArcRotateCamera("Camera", Math.PI / 2, Math.PI / 2, 2, new BABYLON.Vector3(0, 0, 5), scene);
+                        // 使得我们可以控制相机拍摄角度
+                        camera.attachControl(canvas, true);
+                        // 导入模型(参数：文件夹路径 资源名称 场景对象 成功回调函数)
+                        BABYLON.SceneLoader.Append(symbol_path, symbol_name, scene, function(newMeshes) {
+                            scene.activeCamera = null;
+                            scene.createDefaultCameraOrLight(true); // 默认光源
+                            scene.activeCamera.attachControl(canvas, false);
+                        });
+                        // 返回场景
+                        return scene;
+                    };
+                    // 获取场景
+                    var scene = create_scene();
+                    // 画布上重复渲染场景
+                    engine.runRenderLoop(function() {
+                        scene.render(); // 渲染场景
+                    });
+                })
+            },
+            deleteSymbol(delete_time) {
+                this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    axios.post('http://127.0.0.1:3000/api/file/deleteSymbol', {
+                        delete_path: delete_time
+                    }).then(res => {
+                        console.log(res.data.msg);
+                    }).catch(e => {
+                        console.log(e);
+                    })
+                    location.reload();
+                }).catch(() => {
+                    this.$message({
+                        type: 'info',
+                        message: '已取消删除'
+                    });
+                });
+            }
+        },
+        created() {
+            this.showList()
+        },
+        computed: {
+            symbolSortList() {
+                return this.symbolList.sort((a, b) => a.s_timesort - b.s_timesort)
+            }
+        }
+    })
+</script>
+
+</html>

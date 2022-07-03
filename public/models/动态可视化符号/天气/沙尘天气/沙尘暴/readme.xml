@@ -1,0 +1,25 @@
+<MODEL>
+    <!-- 符号名称，如 地震 -->
+    <CAPTION>沙尘暴</CAPTION>  
+    <!-- 符号描述 如 地震是***  -->
+    <DESCRIPTION>沙暴是指大风把大量沙粒吹入近地层所形成的挟沙风暴；尘暴则是大风把大量尘埃及其他细颗粒物卷入高空所形成的风暴</DESCRIPTION>
+    <!-- 符号的文件名，如 a.gltf -->
+    <FILE>沙尘暴.gltf</FILE>
+    <!-- 缩略图名，如 a.gif -->
+    <THUMBNAIL>沙尘暴.gif</THUMBNAIL>
+    <!-- 符号支持的参数，不清楚可先不填 -->
+    <PARAMETERS>
+        <PARAMETER>
+            <NAME></NAME>
+            <MEAN></MEAN>
+            <TYPE></TYPE>
+            <DEFAULTVALUE></DEFAULTVALUE>
+            <MINVALUE></MINVALUE>
+            <MAXVALUE></MAXVALUE>
+            <CATEGORY></CATEGORY>
+        </PARAMETER>
+        <PARAMETER></PARAMETER>
+    </PARAMETERS>
+</MODEL>
+
+

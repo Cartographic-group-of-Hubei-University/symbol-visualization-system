@@ -1,0 +1,23 @@
+<MODEL>
+    <!-- 符号名称，如 地震 -->
+    <CAPTION>小雪-中雪</CAPTION>  
+    <!-- 符号描述 如 地震是***  -->
+    <DESCRIPTION>从小雪天气转为中雪天气</DESCRIPTION>
+    <!-- 符号的文件名，如 a.gltf -->
+    <FILE>小雪-中雪.gltf</FILE>
+    <!-- 缩略图名，如 a.gif -->
+    <THUMBNAIL>小雪-中雪.gif</THUMBNAIL>
+    <!-- 符号支持的参数，不清楚可先不填 -->
+    <PARAMETERS>
+        <PARAMETER>
+            <NAME></NAME>
+            <MEAN></MEAN>
+            <TYPE></TYPE>
+            <DEFAULTVALUE></DEFAULTVALUE>
+            <MINVALUE></MINVALUE>
+            <MAXVALUE></MAXVALUE>
+            <CATEGORY></CATEGORY>
+        </PARAMETER>
+        <PARAMETER></PARAMETER>
+    </PARAMETERS>
+</MODEL>

@@ -1,0 +1,23 @@
+<MODEL>
+    <!-- 符号名称，如 地震 -->
+    <CAPTION>阴</CAPTION>  
+    <!-- 符号描述 如 地震是***  -->
+    <DESCRIPTION>阴指天空中，低云总云量在8/10及以上，阳光很少或不能透过云层， 天色阴暗的天空状况</DESCRIPTION>
+    <!-- 符号的文件名，如 a.gltf -->
+    <FILE>阴.gltf</FILE>
+    <!-- 缩略图名，如 a.gif -->
+    <THUMBNAIL>阴.gif</THUMBNAIL>
+    <!-- 符号支持的参数，不清楚可先不填 -->
+    <PARAMETERS>
+        <PARAMETER>
+            <NAME></NAME>
+            <MEAN></MEAN>
+            <TYPE></TYPE>
+            <DEFAULTVALUE></DEFAULTVALUE>
+            <MINVALUE></MINVALUE>
+            <MAXVALUE></MAXVALUE>
+            <CATEGORY></CATEGORY>
+        </PARAMETER>
+        <PARAMETER></PARAMETER>
+    </PARAMETERS>
+</MODEL>

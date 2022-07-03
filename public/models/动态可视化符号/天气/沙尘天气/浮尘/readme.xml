@@ -1,0 +1,19 @@
+﻿<MODEL>
+    <CAPTION>浮尘</CAPTION>  
+    <DESCRIPTION>浮尘是尘土、细沙均匀浮游在空中，使水平能见度小于10 000米的现象。浮尘多为远处尘沙经上层气流传播而来;或为沙尘暴、扬沙出现后尚未下沉的细粒浮游空中而成
+</DESCRIPTION>
+    <FILE>浮尘.gltf</FILE>
+    <THUMBNAIL>浮尘.gif</THUMBNAIL>
+    <PARAMETERS>
+        <PARAMETER>
+            <NAME></NAME>
+            <MEAN></MEAN>
+            <TYPE></TYPE>
+            <DEFAULTVALUE></DEFAULTVALUE>
+            <MINVALUE></MINVALUE>
+            <MAXVALUE></MAXVALUE>
+            <CATEGORY></CATEGORY>
+        </PARAMETER>
+        <PARAMETER></PARAMETER>
+    </PARAMETERS>
+</MODEL>

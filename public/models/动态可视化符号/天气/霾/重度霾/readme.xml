@@ -1,0 +1,23 @@
+﻿<MODEL>
+    <!-- 符号名称，如 地震 -->
+    <CAPTION>重度霾</CAPTION>  
+    <!-- 符号描述 如 地震是***  -->
+    <DESCRIPTION>重度霾是指原因不明的大量烟、尘等微粒悬浮而导致空气相对湿度小于等于80%，且能见度小于2公里，从而形成的浑浊现象的天气现象。</DESCRIPTION>
+    <!-- 符号的文件名，如 a.gltf -->
+    <FILE>重度霾.gltf</FILE>
+    <!-- 缩略图名，如 a.gif -->
+    <THUMBNAIL>重度霾.gif</THUMBNAIL>
+    <!-- 符号支持的参数，不清楚可先不填 -->
+    <PARAMETERS>
+        <PARAMETER>
+            <NAME></NAME>
+            <MEAN></MEAN>
+            <TYPE></TYPE>
+            <DEFAULTVALUE></DEFAULTVALUE>
+            <MINVALUE></MINVALUE>
+            <MAXVALUE></MAXVALUE>
+            <CATEGORY></CATEGORY>
+        </PARAMETER>
+        <PARAMETER></PARAMETER>
+    </PARAMETERS>
+</MODEL>

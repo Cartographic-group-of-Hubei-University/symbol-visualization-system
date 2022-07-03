@@ -1,0 +1,18 @@
+<MODEL>
+    <CAPTION>邮局</CAPTION>  
+    <DESCRIPTION>邮局</DESCRIPTION>
+    <FILE>邮局.gltf</FILE>
+    <THUMBNAIL>邮局.gif</THUMBNAIL>
+    <PARAMETERS>
+        <PARAMETER>
+            <NAME></NAME>
+            <MEAN></MEAN>
+            <TYPE></TYPE>
+            <DEFAULTVALUE></DEFAULTVALUE>
+            <MINVALUE></MINVALUE>
+            <MAXVALUE></MAXVALUE>
+            <CATEGORY></CATEGORY>
+        </PARAMETER>
+        <PARAMETER></PARAMETER>
+    </PARAMETERS>
+</MODEL>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>符号库管理</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./assets/bootstrap/bootstrap-colorpicker.min.css" rel="stylesheet">
+    <link href="./assets/bootstrap/bootstrap-treeview.min.css" rel="stylesheet">
+    <script src="./assets/bootstrap/html5shiv.min.js"></script>
+    <script src="./assets/bootstrap/respond.min.js"></script>
+    
+    <!-- css -->
+    <link rel="stylesheet" href="./assets/css/rangeslider.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- Babylon.js -->
+    <script src="./assets/babylonjs-sample/pep.min.js"></script>
+    <script src="./assets/babylonjs-sample/dat.gui.min.js"></script>
+    <script src="./assets/babylonjs-sample/ammo.js"></script>
+    <script src="./assets/babylonjs-sample/cannon.js"></script>
+    <script src="./assets/babylonjs-sample/Oimo.js"></script>
+    <script src="./assets/babylonjs-sample/gltf_validator.js"></script>
+    <script src="./assets/babylonjs-sample/earcut.min.js"></script>
+    <script src="./assets/babylonjs-sample/babylon.js"></script>
+    <script src="./assets/babylonjs-sample/babylon.inspector.bundle.js"></script>
+    <script src="./assets/babylonjs-sample/babylonjs.materials.min.js"></script>
+    <script src="./assets/babylonjs-sample/babylonjs.proceduralTextures.min.js"></script>
+    <script src="./assets/babylonjs-sample/babylonjs.postProcess.min.js"></script>
+    <script src="./assets/babylonjs-sample/babylonjs.loaders.js"></script>
+    <script src="./assets/babylonjs-sample/babylonjs.serializers.min.js"></script>
+    <script src="./assets/babylonjs-sample/babylon.gui.min.js"></script>
+    <!-- js -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <script src="./assets/js/bootstrap.min.js"></script>
+    <script src="./assets/js/bootstrap-colorpicker.js"></script>
+    <script src="./assets/js/bootstrap-slider.min.js"></script>
+    <script src="./assets/bootstrap/bootstrap-treeview.min.js"></script>
+    <script src="./main.js"></script>
+    <script src="./assets/js/rangeslider.min.js"></script>
+    <script src='./assets/js/gif.js'></script>
+    <script src="./assets/js/gif.worker.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <!--        导航栏-->
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <nav class="navbar navbar-default" role="navigation">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"><span
+                  class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span
+                  class="icon-bar"></span><span class="icon-bar"></span></button>
+                        <a class="navbar-brand" href="#">全息地图获取与位置信息聚合技术——符号库管理</a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                        </ul>
+
+                        <!-- 高级检索 -->
+                        <div class="advanced-search">高级检索
+                            <div class="search-selector">
+                                <div class="search-dimension search-top">
+                                    <span class="search-span">符号维度:</span>
+                                    <div class="checkbox-dimension checkbox-search">
+                                        <input type="checkbox" id="chktwo" value="二维" onclick="CheckDimension(this.value)" /><label for="chktwo">二维符号</label>
+                                        <input type="checkbox" id="chkthree" value="三维" onclick="CheckDimension(this.value)" /><label for="chkthree">三维符号</label>
+                                    </div>
+                                </div>
+                                <div class="search-state search-top">
+                                    <span class="search-span">符号状态:</span>
+                                    <div class="checkbox-state checkbox-search">
+                                        <input type="checkbox" id="chkstatic" value="静态" onclick="CheckStatus(this.value)" /><label for="chkstatic">静态符号</label>
+                                        <input type="checkbox" id="chkdynamic" value="动态" onclick="CheckStatus(this.value)" /><label for="chkdynamic">动态符号</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="navbar-form navbar-left" role="search">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="txt_name" />
+                            </div>
+                            <button type="submit" class="btn btn-default" onclick="Query()">查询</button>
+                            <a href="myData.html"><button type="submit" class="btn btn-default" >我的符号</button></a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!--        第二行，主要内容-->
+        <div class="row clearfix">
+            <div class="col-md-3 column">
+                <div id="modelTree"></div>
+            </div>
+            <div class="col-md-9 column">
+                <!--            开始缩略图-->
+                <div id="thumbcontainer">
+                </div>
+                <div class="modal fade" id="modelviewer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" style="width: 820px">
+                        <div class="modal-content" style="width: auto;top:30px">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="titleLabel">动态三维场景符号</h5>
+
+                                <div class="input-group-addon">
+                                    <select id="myPart" name="parts" value="请选择部件"> 
+                <option value=1>部件1</option>
+                </select>&nbsp;&nbsp;&nbsp;&nbsp;请选择不同的部件并修改其颜色
+                                </div>
+                                <div class="color-control">
+                                    <span>颜色</span><input type="text" class="form-control" id="color" placeholder="#000000">
+                                    <span class="scale-text">请输入缩放比例</span>
+                                    <input type="text" id="scale" />
+                                    <input type="button" id="queding" value="确定" onclick="setScale()" class="el-button" />
+                                </div>
+                                <p class="show-slider">修改符号透明度</p>
+                                <input type="range" id="slider" min="0" max="100" value="50" data-rangeslider>
+                                <div class="upload-save">
+                                    <button id="downloadBtn" onclick="downloadBtn()" class="el-button">模型下载</button>
+                                    <button id="saveAsFileBtn" style="top:20px;" onclick="saveAsFileBtn()" class="el-button">模型另存为</button>
+                                </div>
+                            </div>
+                            <div class="modal-body" style="padding:0">
+                                <div style="height: 400px">
+                                    <canvas id="renderCanvas"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+﻿<MODEL>
+    <CAPTION>扬沙</CAPTION>  
+    <DESCRIPTION>扬沙是指本地或附近尘沙被风吹起而造成的一种天气现象。
+</DESCRIPTION>
+    <FILE>扬沙.gltf</FILE>
+    <THUMBNAIL>扬沙.gif</THUMBNAIL>
+    <PARAMETERS>
+        <PARAMETER>
+            <NAME></NAME>
+            <MEAN></MEAN>
+            <TYPE></TYPE>
+            <DEFAULTVALUE></DEFAULTVALUE>
+            <MINVALUE></MINVALUE>
+            <MAXVALUE></MAXVALUE>
+            <CATEGORY></CATEGORY>
+        </PARAMETER>
+        <PARAMETER></PARAMETER>
+    </PARAMETERS>
+</MODEL>
