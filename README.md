@@ -53,13 +53,14 @@ npm start
 
 项目整体布局分为目录树、导航头部与搜索栏、模型信息展示这三个部分。目录树允许用户按照模型类别查找模型，搜索栏支持用户模糊查询，相关的模型信息将在页面中间部分进行展示。
 
-<div align=center><img src="https://github.com/Cartographic-group-of-Hubei-University/vue-cesium-visualization/raw/master/images/cesium1.gif"></div>
+<div align=center><img src="https://github.com/Cartographic-group-of-Hubei-University/symbol-visualization-system/raw/master/images/symbol1.gif"></div>
+
 
 ### 符号库目录树查询
 
 结合`JQuery`和`xml`文件生成目录树，点击左侧目录树，显示对应类别的所有符号模型信息；同时，也可以根据目录树查看对应符号模型所属的类别。
 
-<div align=center><img src="https://github.com/Cartographic-group-of-Hubei-University/vue-cesium-visualization/raw/master/images/cesium2.gif"></div>
+<div align=center><img src="https://github.com/Cartographic-group-of-Hubei-University/symbol-visualization-system/raw/master/images/symbol2.gif"></div>
 
 ### 符号的模糊检索和高级检索
 
@@ -67,13 +68,13 @@ npm start
 
 在“高级检索”中，可以勾选二维/三维符号、静态/动态符号来对模型数据进行进一步的筛选。
 
-<div align=center><img src="https://github.com/Cartographic-group-of-Hubei-University/vue-cesium-visualization/raw/master/images/cesium2.gif"></div>
+<div align=center><img src="https://github.com/Cartographic-group-of-Hubei-University/symbol-visualization-system/raw/master/images/symbol4.gif"></div>
 
 ### 符号模型三维展示及参数修改
 
 使用`babylon.js`对符号模型进行展示，显示其归属类别、名称、模型存放地址等，并允许对符号模型中的相关参数(部件颜色、透明度、缩放比例)进行修改；同时，也支持对原模型以及修改后的模型进行本地下载，将符号模型数据下载到本地。
 
-<div align=center><img src="https://github.com/Cartographic-group-of-Hubei-University/vue-cesium-visualization/raw/master/images/cesium2.gif"></div>
+<div align=center><img src="https://github.com/Cartographic-group-of-Hubei-University/symbol-visualization-system/raw/master/images/symbol3.gif"></div>
 
 ## 个人符号库管理
 
